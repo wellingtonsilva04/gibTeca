@@ -1,79 +1,109 @@
 <html lang="pt-br">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>CADASTRO DE CLIENTES COM BANCO DE DADOS E PHP</title>
-<style type="text/css">
-<!--
-.style1 {
-color: #FF0000;
-font-size: x-small;
-}
-.style3 {color: #0000FF; font-size: x-small; }
-</style>
-<script type="text/javascript">
-function validaCampo()
-{
-if(document.cadastro.nome.value=="")
-{
-alert("O Campo nome é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.email.value=="")
-{
-alert("O Campo email é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.endereco.value=="")
-{
-alert("O Campo endereço é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.cidade.value=="")
-{
-alert("O Campo Cidade é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.estado.value=="")
-{
-alert("O Campo Estado é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.bairro.value=="")
-{
-alert("O Campo Bairro é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.pais.value=="")
-{
-alert("O Campo país é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.login.value=="")
-{
-alert("O Campo Login é obrigatório!");
-return false;
-}
-else
-if(document.cadastro.senha.value=="")
-{
-alert("Digite uma senha!");
-return false;
-}
-else
-return true;
-}
-<!-- Fim do JavaScript que validará os campos obrigatórios! -->
-</script>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <title>CADASTRO DE Usuário</title>
+  <style type="text/css">
+    <!--
+    .style1 {
+      color: #FF0000;
+      font-size: x-small;
+      }
+      .style3 {color: #0000FF; font-size: x-small; }
+  </style>
+  <script type="text/javascript">
+      function validaCampo()
+      {
+      if(document.cadastro.nome.value=="")
+      {
+      alert("O Campo nome é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.email.value=="")
+      {
+      alert("O Campo email é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.endereco.value=="")
+      {
+      alert("O Campo endereço é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.cidade.value=="")
+      {
+      alert("O Campo Cidade é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.estado.value=="")
+      {
+      alert("O Campo Estado é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.bairro.value=="")
+      {
+      alert("O Campo Bairro é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.pais.value=="")
+      {
+      alert("O Campo país é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.login.value=="")
+      {
+      alert("O Campo Login é obrigatório!");
+      return false;
+      }
+      else
+      if(document.cadastro.senha.value=="")
+      {
+      alert("Digite uma senha!");
+      return false;
+      }
+      else
+      return true;
+      }
+      <!-- Fim do JavaScript que validará os campos obrigatórios! -->
+  </script>
 </head>
  
 <body>
+<!--navbar INICIO-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 3</a>
+    </li>
+    <li class="nav-item">
+      <form class="form-inline" action="/action_page.php">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-success" type="submit">Search</button>
+      </form>
+    </li>
+  </ul>
+
+  
+
+</nav>
+<!--navbar FIM-->
 <form id="cadastro" name="cadastro" method="post" action="cadastro.php" onsubmit="return validaCampo(); return false;">
   <table width="625" border="0">
     <tr>
