@@ -2,30 +2,31 @@
 // Include config file
 require_once 'config.php';
  
-// Define variables and initialize with empty values
+// Define as variáveis e as inicialza com valores vazios
 $username = $password = "";
 $username_err = $password_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
-    // Check if username is empty
+    // Checa se o username é vazio
     if(empty(trim($_POST["username"]))){
-        $username_err = 'Please enter username.';
+        $username_err = 'Por favor entre com seu username.';
     } else{
         $username = trim($_POST["username"]);
     }
     
-    // Check if password is empty
+    // Checa se o password é vazio
     if(empty(trim($_POST['password']))){
-        $password_err = 'Please enter your password.';
+        $password_err = 'Por favor entre com sua senha.';
     } else{
         $password = trim($_POST['password']);
     }
     
-    // Validate credentials
+    /* Validar credenciais. Se password e usarname não forem vazios. 
+    As variaveis username_err e password_err ficam vazias*/
     if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
+        // Prepara o select statement para buscar pelo usuario no banco
         $sql = "SELECT nome, senha FROM usuarios WHERE nome= ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
@@ -40,28 +41,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Store result
                 mysqli_stmt_store_result($stmt);
                 
-                // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                // checa se username existe, se sim então checa password
+                if(mysqli_stmt_num_rows($stmt) == 1){ /*verifica o tamanho do resultado. 
+                    Como o login é unico então é retornado apenas 1 resultado*/                      
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            /* Password is correct, so start a new session and
-                            save the username to the session */
+                    mysqli_stmt_bind_result($stmt, $username, $hashed_password);// Instrução de onde  salvar o resultado
+                    if(mysqli_stmt_fetch($stmt)){/* Obtém o resultado de um preparado comando e coloca nas variáveis 
+                        determinadas por mysqli_stmt_bind_result().*/
+                        if(password_verify($password, $hashed_password)){//compara a password passada com a obotido do banco
+                            /* Se a senha for correta, então inicia uma nova sessão e
+                            salva o  username da sessão */
                             session_start();
                             $_SESSION['username'] = $username;      
                             header("location: welcome.php");
                         } else{
-                            // Display an error message if password is not valid
-                            $password_err = 'The password you entered was not valid.';
+                            // Mostra uma mensagem de error se a senha não for valida
+                            $password_err = 'A senha que você digitou não era válida.';
                         }
                     }
                 } else{
-                    // Display an error message if username doesn't exist
-                    $username_err = 'No account found with that username.';
+                    // Mostra uma mensagem se username não existir
+                    $username_err = 'Nenhuma conta encotrada com esse nome.';
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Oops! Algo deu errado ao tentar pesquisar no bando de dados. Por favor tente novamente mais tarde.";
             }
         }
         
@@ -75,7 +78,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
  
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
