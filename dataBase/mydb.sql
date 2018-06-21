@@ -37,11 +37,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`gibis` (
   `numero` INT NULL,
   `preco` DECIMAL(10,2) NULL,
   `quantidade` INT NULL,
-  `usuarios_idusuarios` INT NOT NULL,
+  `usuarios_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_gibis_usuarios1_idx` (`usuarios_idusuarios` ASC),
+  INDEX `fk_gibis_usuarios1_idx` (`usuarios_id` ASC),
   CONSTRAINT `fk_gibis_usuarios1`
-    FOREIGN KEY (`usuarios_idusuarios`)
+    FOREIGN KEY (`usuarios_id`)
     REFERENCES `mydb`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
