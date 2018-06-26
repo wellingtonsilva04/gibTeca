@@ -7,6 +7,10 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: login.php");
   exit;
 }
+// Conexão
+include_once 'config.php';
+// Message
+include_once 'crudGibi/message.php';
 ?>
  
 <!DOCTYPE html>
@@ -21,41 +25,91 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 <body>
-  <div class="container">
-  <div class="row">
-	<div class="col s12 m6 push-m3">
-		<h3 class="light"> Novo Gibi </h3>
-		<form action="php_action/create.php" method="POST">
-			<div class="input-field col s12">
-				<input type="text" name="titulo" id="titulo">
-				<label for="titulo">Titulo</label>
-			</div>
+  <div class="container valign-wapper">
+		<p class = "right-align"><a href="logout.php" class="btn-small waves-effect waves-light red">Sair</a></p>
 
-			<div class="input-field col s12">
-				<input type="text" name="editora" id="editora">
-				<label for="editora">Sobrenome</label>
-			</div>
-
-			<div class="input-field col s12">
-				<input type="text" name="email" id="email">
-				<label for="email">Email</label>
-			</div>
-
-			<div class="input-field col s12">
-				<input type="text" name="idade" id="idade">
-				<label for="idade">Idade</label>
-			</div>
-
-			<button type="submit" name="btn-cadastrar" class="btn"> Cadastrar </button>
-			<a href="index.php" class="btn green"> Lista de clientes </a>
-		</form>
 		
 	</div>
-</div>
-    <h3>Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?></b>. Bem vindo ao seu Site.</h3>
+    <!-- <h3>Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3> -->
   
-  <p><a href="logout.php" class="btn-small waves-effect waves-light">Sign Out of Your Account</a></p>
-  </div>
+  
+  
+	</div><!-- Fim container-->
+	
+<div class="row">
+	<div class="col s12 m8 push-m2">
+		<h3 class="light"> Clientes </h3>
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>titulo:</th>
+					<th>editora:</th>
+					<th>preco:</th>
+					<th>quantidade:</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<?php
+				$sql = "SELECT * FROM gibis";
+				$resultado = mysqli_query($connect, $sql);
+               
+                if(mysqli_num_rows($resultado) > 0):
+
+				while($dados = mysqli_fetch_array($resultado)):
+				?>
+				<tr>
+					<td><?php echo $dados['titulo']; ?></td>
+					<td><?php echo $dados['editora']; ?></td>
+					<td><?php echo $dados['preco']; ?></td>
+					<td><?php echo $dados['quantidade']; ?></td>
+					<td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a></td>
+
+					<td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
+
+					<!-- Modal Structure -->
+					  <div id="modal<?php echo $dados['id']; ?>" class="modal">
+					    <div class="modal-content">
+					      <h4>Opa!</h4>
+					      <p>Tem certeza que deseja excluir esse cliente?</p>
+					    </div>
+					    <div class="modal-footer">					     
+
+					      <form action="crud/delete.php" method="POST">
+					      	<input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
+					      	<button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
+
+					      	 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+
+					      </form>
+
+					    </div>
+					  </div>
+
+
+				</tr>
+			   <?php 
+				endwhile;
+				else: ?>
+
+				<tr>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+				</tr>
+
+			   <?php 
+				endif;
+			   ?>
+
+			</tbody>
+		</table>
+		<br>
+		<a href="adicionarGibi.php" class="btn">Adicionar cliente</a>
+	</div>
+</div>
+
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="../js/materialize.min.js"></script>
