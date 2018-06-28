@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once 'config.php';
+require_once 'db/config.php';
  
 // Define as variáveis e as inicialza com valores vazios
 $username = $password = "";
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             $_SESSION['username'] = $username;
                             $_SESSION['id']=$id;
-                            header("location: welcome.php");
+                            header("location: content/welcome.php");
                         } else{
                             // Mostra uma mensagem de error se a senha não for valida
                             $password_err = 'A senha que você digitou não era válida.';
