@@ -4,7 +4,7 @@ session_start();
 // Conexão
 require_once '../../content/config.php';
 
-}
+
 
 if(isset($_POST['btn-editar'])):
 	$titulo = mysqli_escape_string($link,$_POST['titulo']);
@@ -18,10 +18,10 @@ if(isset($_POST['btn-editar'])):
 
 	if(mysqli_query($link, $sql)):
 		echo("Cadastrado com sucesso!");
-		//header('Location: ../../content/welcome.php');
+		header('Location: ../../content/welcome.php');
 	else:
 		echo("Erro ao editar");
 		echo("Error description: " . mysqli_error($link));
-		//header('Location: ../../content/welcome.php');
+		header('Location: ../../content/welcome.php');
 	endif;
 endif;

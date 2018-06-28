@@ -4,7 +4,7 @@ session_start();
 // Conexão
 require_once '../../content/config.php';
 
-if(isset($_POST['btn-delatar'])):
+if(isset($_POST['btn-deletar'])):
 	$id =mysqli_escape_string( $link,$_POST['id']);
 
 	$sql = "DELETE FROM gibis WHERE id  = '$id'";

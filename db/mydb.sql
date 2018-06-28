@@ -8,7 +8,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
-drop Schema mydb;
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE = utf8_general_ci ;
 USE `mydb` ;
@@ -75,8 +74,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tags_has_gibis` (
   CONSTRAINT `fk_tags_has_gibis_gibis1`
     FOREIGN KEY (`gibis_id`)
     REFERENCES `mydb`.`gibis` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
@@ -93,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`comprar` (
   CONSTRAINT `fk_comprar_usuarios1`
     FOREIGN KEY (`usuarios_id`)
     REFERENCES `mydb`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
@@ -117,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carrinho` (
   CONSTRAINT `fk_carrinho_gibis1`
     FOREIGN KEY (`gibis_id`)
     REFERENCES `mydb`.`gibis` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE cascade
+    ON UPDATE cascade)
 ENGINE = InnoDB;
 
 
