@@ -2,7 +2,7 @@
 // Sessão
 session_start();
 // Conexão
-require_once '../config.php';
+require_once '../../content/config.php';
 // Clear
 function clear($input) {
 	global $link;
@@ -14,7 +14,6 @@ function clear($input) {
 }
 $id = $_SESSION['id'];
 if(isset($_POST['btn-cadastrar'])):
-	echo("enviou");
 	$titulo = clear($_POST['titulo']);
 	$editora = clear($_POST['editora']);
 	$preco = clear($_POST['preco']);
@@ -25,10 +24,10 @@ if(isset($_POST['btn-cadastrar'])):
 
 	if(mysqli_query($link, $sql)):
 		echo("Cadastrado com sucesso!");
-		header('Location: ../content/welcome.php');
+		header('Location: ../../content/welcome.php');
 	else:
 		echo("Erro ao cadastrar");
 		echo("Error description: " . mysqli_error($link));
-		header('Location: ../content/welcome.php');
+		header('Location: ../../content/welcome.php');
 	endif;
 endif;

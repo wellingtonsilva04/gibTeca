@@ -3,10 +3,10 @@
 <head>
 <title> GIBTECA </title>
 <!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="css/materialize.min.css">
+<link rel="stylesheet" href="public/css/materialize.min.css">
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel= "atylesheet" href= "css/index.css">
+<link rel= "atylesheet" href= "public/css/index.css">
 <!-- Compiled and minified JavaScript -->
 
         

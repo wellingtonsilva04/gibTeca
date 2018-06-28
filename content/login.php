@@ -1,6 +1,6 @@
 <?php
 // Include config file
-require_once 'db/config.php';
+require_once 'config.php';
  
 // Define as variáveis e as inicialza com valores vazios
 $username = $password = "";
@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             $_SESSION['username'] = $username;
                             $_SESSION['id']=$id;
-                            header("location: content/welcome.php");
+                            header("location:welcome.php");
                         } else{
                             // Mostra uma mensagem de error se a senha não for valida
                             $password_err = 'A senha que você digitou não era válida.';
@@ -62,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     }
                 } else{
                     // Mostra uma mensagem se username não existir
-                    $username_err = 'Nenhuma conta encotrada com esse nome.';
+                    $username_err = 'Nenhuma conta encontrada com esse nome.';
                 }
             } else{
                 echo "Oops! Algo deu errado ao tentar pesquisar no bando de dados. Por favor tente novamente mais tarde.";
@@ -111,6 +111,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <button type="submit" class="btn btn-lg btn-primary btn-block" value="Login">Acessar</button>
             <p>Você não tem uma conta? <a href="register.php">Registre-se agora</a>.</p>
         </form>
-    </div><!--/container>    
+    </div><!--/container-->    
 </body>
 </html>

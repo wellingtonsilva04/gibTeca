@@ -22,20 +22,21 @@ $id = $_SESSION['id'];
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="../public/css/materialize.min.css"  media="screen,projection"/>
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 <body>
+	<header>
+		<div class = "row">
+			<p class = "col s6 center-align"><a class = "btn" href = "welcome.php">Home</a><p>
+			<p class = "col s6 center-align"><a href="logout.php" class="btn-small waves-effect waves-light red">Sair</a></p>
+		</div>
+	</header>
   <div class="container valign-wapper">
-		<p class = "right-align"><a href="logout.php" class="btn-small waves-effect waves-light red">Sair</a></p>
 
-		
-	</div>
-  <h3>Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3>
-  
-  
+  	<h3 class = "center-align">Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3>  
   
 	</div><!-- Fim container-->
 	
@@ -66,7 +67,7 @@ $id = $_SESSION['id'];
 					<td><?php echo $dados['editora']; ?></td>
 					<td><?php echo $dados['preco']; ?></td>
 					<td><?php echo $dados['quantidade']; ?></td>
-					<td><a href="editar.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a></td>
+					<td><a href="editarGibi.php?id=<?php echo $dados['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a></td>
 
 					<td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 
@@ -78,16 +79,16 @@ $id = $_SESSION['id'];
 					    </div>
 					    <div class="modal-footer">					     
 
-					      <form action="crud/delete.php" method="POST">
+					      <form action="../app/crudGibi/deleteGibi.php" method="POST">
 					      	<input type="hidden" name="id" value="<?php echo $dados['id']; ?>">
 					      	<button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
 
 					      	 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
 
-					      </form>
+					      </form><!--fimForm-->
 
-					    </div>
-					  </div>
+					    </div><!--Fim Modal footer-->
+					  </div> <!-- Fim Modal-->
 
 
 				</tr>
@@ -115,6 +116,8 @@ $id = $_SESSION['id'];
 
 
   <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="../js/materialize.min.js"></script>
+  <script type="text/javascript" src="../public/js/materialize.min.js"></script>
+	
 </body>
+
 </html>
