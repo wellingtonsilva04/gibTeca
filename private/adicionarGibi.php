@@ -34,7 +34,7 @@ session_start();
 
 					<div class="input-field col s12">
 						<input type="text" name="preco" id="preco">
-						<label for="email">Preço</label>
+						<label for="preco">Preço</label>
 					</div>
 
 					<div class="input-field col s12">

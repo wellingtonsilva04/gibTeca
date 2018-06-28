@@ -27,7 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     As variaveis username_err e password_err ficam vazias*/
     if(empty($username_err) && empty($password_err)){
         // Prepara o select statement para buscar pelo usuario no banco
-        $sql = "SELECT nome, senha FROM usuarios WHERE nome= ?";
+        $sql = "SELECT id, nome, senha FROM usuarios WHERE nome= ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -45,14 +45,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if(mysqli_stmt_num_rows($stmt) == 1){ /*verifica o tamanho do resultado. 
                     Como o login é unico então é retornado apenas 1 resultado*/                      
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $username, $hashed_password);// Instrução de onde  salvar o resultado
+                    mysqli_stmt_bind_result($stmt, $id,$username, $hashed_password);// Instrução de onde  salvar o resultado
                     if(mysqli_stmt_fetch($stmt)){/* Obtém o resultado de um preparado comando e coloca nas variáveis 
                         determinadas por mysqli_stmt_bind_result().*/
                         if(password_verify($password, $hashed_password)){//compara a password passada com a obotido do banco
                             /* Se a senha for correta, então inicia uma nova sessão e
                             salva o  username da sessão */
                             session_start();
-                            $_SESSION['username'] = $username;      
+                            $_SESSION['username'] = $username;
+                            $_SESSION['id']=$id;
                             header("location: welcome.php");
                         } else{
                             // Mostra uma mensagem de error se a senha não for valida

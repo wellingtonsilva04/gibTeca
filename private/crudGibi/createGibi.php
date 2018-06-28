@@ -12,21 +12,23 @@ function clear($input) {
 	$var = htmlspecialchars($var);
 	return $var;
 }
-
+$id = $_SESSION['id'];
 if(isset($_POST['btn-cadastrar'])):
+	echo("enviou");
 	$titulo = clear($_POST['titulo']);
 	$editora = clear($_POST['editora']);
 	$preco = clear($_POST['preco']);
 	$quantidade = clear($_POST['quantidade']);
 
 
-	$sql = "INSERT INTO gibis (titulo, editora, preco, quantidade) VALUES ('$titulo', '$editora', '$preco', '$quantidade')";
+	$sql = "INSERT INTO gibis (titulo, editora, preco, quantidade,usuarios_id) VALUES ('$titulo', '$editora', '$preco', '$quantidade','$id')";
 
 	if(mysqli_query($link, $sql)):
-		$_SESSION['mensagem'] = "Cadastrado com sucesso!";
+		echo("Cadastrado com sucesso!");
 		header('Location: ../welcome.php');
 	else:
-		$_SESSION['mensagem'] = "Erro ao cadastrar";
+		echo("Erro ao cadastrar");
+		echo("Error description: " . mysqli_error($link));
 		header('Location: ../welcome.php');
 	endif;
 endif;

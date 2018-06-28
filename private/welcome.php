@@ -1,5 +1,10 @@
 <?php
 // Initialize the session
+// Conexão
+require_once 'config.php';
+// Message
+//include_once 'crudGibi/message.php';
+
 session_start();
  
 // If session variable is not set it will redirect to login page
@@ -7,10 +12,8 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: login.php");
   exit;
 }
-// Conexão
-include_once 'config.php';
-// Message
-include_once 'crudGibi/message.php';
+$id = $_SESSION['id'];
+
 ?>
  
 <!DOCTYPE html>
@@ -30,7 +33,7 @@ include_once 'crudGibi/message.php';
 
 		
 	</div>
-    <!-- <h3>Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3> -->
+  <h3>Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3>
   
   
   
@@ -38,7 +41,7 @@ include_once 'crudGibi/message.php';
 	
 <div class="row">
 	<div class="col s12 m8 push-m2">
-		<h3 class="light"> Clientes </h3>
+		<h3 class="light"> Meus Gibis </h3>
 		<table class="striped">
 			<thead>
 				<tr>
@@ -51,10 +54,10 @@ include_once 'crudGibi/message.php';
 
 			<tbody>
 				<?php
-				$sql = "SELECT * FROM gibis";
-				$resultado = mysqli_query($connect, $sql);
+				$sql = "SELECT * FROM gibis WHERE usuarios_id = $id";
+				$resultado = mysqli_query($link, $sql);
                
-                if(mysqli_num_rows($resultado) > 0):
+          if(mysqli_num_rows($resultado) > 0):
 
 				while($dados = mysqli_fetch_array($resultado)):
 				?>
@@ -68,10 +71,10 @@ include_once 'crudGibi/message.php';
 					<td><a href="#modal<?php echo $dados['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 
 					<!-- Modal Structure -->
-					  <div id="modal<?php echo $dados['id']; ?>" class="modal">
+					  <div id="modal <?php echo $dados['id']; ?>" class="modal">
 					    <div class="modal-content">
 					      <h4>Opa!</h4>
-					      <p>Tem certeza que deseja excluir esse cliente?</p>
+					      <p>Tem certeza que deseja excluir esse Gibi?</p>
 					    </div>
 					    <div class="modal-footer">					     
 
@@ -106,7 +109,7 @@ include_once 'crudGibi/message.php';
 			</tbody>
 		</table>
 		<br>
-		<a href="adicionarGibi.php" class="btn">Adicionar cliente</a>
+		<a href="adicionarGibi.php" class="btn">Adicionar Gibi</a>
 	</div>
 </div>
 
