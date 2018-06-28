@@ -25,10 +25,10 @@ if(isset($_POST['btn-cadastrar'])):
 
 	if(mysqli_query($link, $sql)):
 		echo("Cadastrado com sucesso!");
-		header('Location: ../welcome.php');
+		header('Location: ../content/welcome.php');
 	else:
 		echo("Erro ao cadastrar");
 		echo("Error description: " . mysqli_error($link));
-		header('Location: ../welcome.php');
+		header('Location: ../content/welcome.php');
 	endif;
 endif;
