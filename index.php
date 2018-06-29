@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="public/css/materialize.min.css">
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel= "atylesheet" href= "public/css/index.css">
+<link rel= "stylesheet" href= "public/css/index.css">
 <!-- Compiled and minified JavaScript -->
 
         
@@ -35,17 +35,17 @@
           </div>
           
         </div>
-      </nav>
-    </header>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems, options);
-      });
-    </script>
-  </div>
-  <script src="js/materialize.min.js"></script>
+      </nav><!--Fim cabeçalho navbar-->
+    </header><!--Fim cabeçalho-->
+    
+    
+  </div><!--Fim Container-->
+  
+  <script type="text/javascript" src="public/js/materialize.min.js"></script>
+  <script type="text/javascript">
+			 M.AutoInit();
+	</script>
+	
 </body>
 </html>
 
