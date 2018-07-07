@@ -17,7 +17,7 @@
       <nav>
         <div class="nav-wrapper row">
           <div class="col s4">
-          <a href="content/index.php" class="brand-logo">Logo</a>
+          <a href="index.php" class="brand-logo">Logo</a>
           </div>
 
           <form class= "col s4">
@@ -29,7 +29,7 @@
           </form>
           <div class= "col s4">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href= "login.php"><i class="material-icons">account_circle</i></a></li>
+              <li><a href= "content/login.php"><i class="material-icons">account_circle</i></a></li>
               <li><a href="teste.php">Teste</a></li>
             </ul>
           </div>
