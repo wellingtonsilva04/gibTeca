@@ -17,7 +17,7 @@
       <nav>
         <div class="nav-wrapper row">
           <div class="col s4">
-          <a href="index.php" class="brand-logo">Logo</a>
+          <a href="content/index.php" class="brand-logo">Logo</a>
           </div>
 
           <form class= "col s4">
