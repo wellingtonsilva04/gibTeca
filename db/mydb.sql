@@ -120,6 +120,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`carrinho` (
     ON UPDATE cascade)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `mydb`.`gibis_atualizacoes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `titulo_antigo` VARCHAR(45) NULL,
+  `titulo_novo` VARCHAR(45) NULL,
+  `editora_antiga` VARCHAR(45) NULL,
+  `editora_nova` VARCHAR(45) NULL,
+  `numero_antigo` INT NULL,
+  `numero_novo` INT NULL,
+  `quantidade_antiga` INT NULL,
+  `quantidade_nova` INT NULL,
+  `gibis_id` INT NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+DELIMITER $$
+CREATE TRIGGER audit_gibis 
+BEFORE UPDATE ON gibis
+FOR EACH ROW BEGIN
+INSERT INTO gibis_atualizacoes (id, titulo_antigo, titulo_novo,editora_antiga, editora_nova,numero_antigo,numero_novo, quantidade_antiga, quantidade_nova, gibis_id) values (null, old.titulo,new.titulo, old.editora, new.editora,old.numero,new.numero,old.quantidade,new.quantidade, new.id);
+END$$
+DELIMITER ;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
