@@ -9,13 +9,12 @@
 <link rel= "stylesheet" href= "public/css/index.css">
 <!-- Compiled and minified JavaScript -->
 
-        
 </head>
 <body>
   <div class="container">  
     <header>
       <nav>
-        <div class="nav-wrapper row">
+        <div class="nav-wrapper blue row">
           <div class="col s4">
           <a href="index.php" class="brand-logo">Logo</a>
           </div>
@@ -30,7 +29,7 @@
           <div class= "col s4">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href= "content/login.php"><i class="material-icons">account_circle</i></a></li>
-              <li><a href="teste.php">Teste</a></li>
+              <li><a href="testes/teste.php">Teste</a></li>
             </ul>
           </div>
           

@@ -83,34 +83,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="../public/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>     
     <link rel= "stylesheet" href = "css/login.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-</head>
+    </head>
 <body>
     <div class="container">
         
-        <form class ="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h2 class = "form-signin-heading">Login</h2>
+        <form class ="form-signin white z-depth-4" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <h2 class = "center-align">Login</h2>
             <p>Por favor entre com suas credencias para fazer o login.</p>    
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Nome de Usuário</label>
-                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
+            <div class="input-field <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <input type="text" id = "nome" name="username" class="validate" value="<?php echo $username; ?>">
+                <label for= "nome">Nome de Usuário</label>
+                <span class="helper-text red-text"><?php echo $username_err; ?></span>
             </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+            <div class="input-field <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <label>Senha</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <input type="password" name="password" class="validate">
+                <span class="helper-text red-text"><?php echo $password_err; ?></span>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" value="Login">Acessar</button>
+            <button type="submit" class="btn waves-effect waves-light" value="Login">Acessar</button>
             <p>Você não tem uma conta? <a href="register.php">Registre-se agora</a>.</p>
         </form>
-    </div><!--/container-->    
+    </div><!--/container-->
+    <!-- Compiled and minified JavaScript -->
+    <script src="../public/js/materialize.min.js"></script>
 </body>
 </html>

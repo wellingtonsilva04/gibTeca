@@ -96,42 +96,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Sign Up</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel= "stylesheet" href = "css/login.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Registre-se</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel= "stylesheet" href = "css/register.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>     
+    
 </head>
 <body>
     <div class="container">
         
-        <form class ="form-signin" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h2>Criar Conta</h2>
+        <form class ="form-signin white z-depth-4" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <h1 class="center-align">Criar Conta</h1>
             <p>Por favor preencha o formulário com seus dados.</p>
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+            <div class="input-field <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <input type="text" name="username" value="<?php echo $username; ?>">
                 <label>Username</label>
-                <input type="text" name="username"class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
+                <span class="helper-text red-text"><?php echo $username_err; ?></span>
             </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+            <div class="input-field <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <input type="password" name="password" value="<?php echo $password; ?>">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <span class="helper-text red-text"><?php echo $password_err; ?></span>
             </div>
-            <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+            <div class="input-field <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
+                <input type="password" name="confirm_password"  value="<?php echo $confirm_password; ?>">
                 <label>Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                <span class="help-block"><?php echo $confirm_password_err; ?></span>
+                <span class="helper-text red-text"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Registrar">
-                <input type="reset" class="btn btn-danger" value="Limpar">
+            <div class="input-field">
+                <div class="row">
+                    <input type="submit" class="btn col s4 push-s1 left" value="Registrar">
+                    <input type="reset" class="btn col s4 pull-s1 right" value="Limpar">
+                </div>
             </div>
-            <p>Você ja tem uma conta? <a href="login.php">Entre Aqui</a>.</p>
+            <p class="center-align">Você ja tem uma conta? <a href="login.php">Entre Aqui</a>.</p>
         </form>
-    </div>    
+    </div>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 </body>
 </html>

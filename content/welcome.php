@@ -12,7 +12,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   header("location: login.php");
   exit;
 }
-$id = $_SESSION['id'];
+$id = $_SESSION['id'];//id do usuário
 
 ?>
  
@@ -42,14 +42,14 @@ $id = $_SESSION['id'];
 
 	<div class="row">
 		<div class="col s12 m8 push-m2">
-			<h3 class="light"> Meus Gibis </h3>
+			<h3 class="light center-align"> Meus Gibis </h3>
 			<table class="striped"><!--Tabela-->
 				<thead><!--Cabeçaho tabela-->
 					<tr><!--linha do cabeçalho da tabela-->
-						<th>titulo:</th>
-						<th>editora:</th>
-						<th>preco:</th>
-						<th>quantidade:</th>
+						<th>Título:</th>
+						<th>Editora:</th>
+						<th>Preco:</th>
+						<th>Quantidade:</th>
 					</tr>
 				</thead><!--Fim Cabeçalhho-->
 
