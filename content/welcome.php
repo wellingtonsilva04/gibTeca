@@ -13,6 +13,9 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
   exit;
 }
 $id = $_SESSION['id'];//id do usuário
+$sql = "SELECT * FROM usuarios WHERE id = '$id'";
+$resultado_usuario = mysqli_query($link, $sql);
+$dados_usuario = mysqli_fetch_array($resultado_usuario)
 
 ?>
  
@@ -28,12 +31,35 @@ $id = $_SESSION['id'];//id do usuário
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 <body>
-	<header><!--Cabeçalho-->
-		<div class = "row">
-			<p class = "col s6 center-align"><a class = "btn" href = "welcome.php">Home</a><p>
-			<p class = "col s6 center-align"><a href="logout.php" class="btn-small waves-effect waves-light red">Sair</a></p>
-		</div>
-	</header><!--Fim cabelçalho-->
+<header>
+      <nav><!--inicio nav cabecalho-->
+        <div class="nav-wrapper blue row">
+          <div class="col s4">
+          <a href="index.php" class="brand-logo">Gibiteca</a>
+          </div>
+
+          <form class= "col s4">
+            <div class="input-field"><!-- BOTAO PROCURAR -->
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div> <!-- FIM BOTAO PROCURAR-->
+          </form>
+          <div class= "col s4">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+              <ul id="dropdown2" class="dropdown-content ">
+			  <li><a href= "#!"> <?php echo $dados_usuario['nome']; ?></a> <li/>
+			  	<li><a href="logout.php">logout</a></li>
+ 				</ul>
+				<a class="btn dropdown-trigger" href="#!" data-target="dropdown2"><i class="material-icons">account_circle</i></a>
+            
+            	</ul>
+          </div>
+          
+        </div>
+      </nav><!--Fim cabeçalho navbar-->
+    </header><!--Fim cabeçalho-->
   <div class="container valign-wapper">
 
   	<h3 class = "center-align">Olá, <b><?php echo htmlspecialchars($_SESSION['username']); ?> </b>. Bem vindo ao seu Site.</h3>  

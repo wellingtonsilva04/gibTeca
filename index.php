@@ -3,6 +3,12 @@
 //Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
 $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
 
+if(!empty(isset($_POST['btn-pesquisar']))){
+ 
+
+
+}
+
 //Selecionar todos os gibis da tabela
 $result_gibi = "SELECT count id as numbergibi FROM gibis";
 $resultado_gibi = mysqli_query($link, $result_gibi);
@@ -44,16 +50,16 @@ $total_gibis = mysqli_num_rows($resultado_gibis);
           </div>
 
           <form class= "col s4">
-            <div class="input-field">
+            <div class="input-field row">
               <input id="search" type="search" required>
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
+              <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar">
+    						<i class="material-icons right">search</i>
+  						</button>
             </div>
           </form>
           <div class= "col s4">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href= "content/login.php"><i class="material-icons">account_circle</i></a></li>
-              <li><a href="testes/teste.php">Teste</a></li>
             </ul>
           </div>
           

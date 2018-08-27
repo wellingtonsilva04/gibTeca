@@ -5,84 +5,11 @@ session_start();
 
 if(isset($_GET['id'])):
 	$id = mysqli_escape_string($link, $_GET['id']);
-	/*// Validate username
-		// Prepare a select statement
-		$sql = "SELECT id FROM gibis WHERE id = ?";
-
-		if($stmt = mysqli_prepare($link, $sql)){
-				// Bind variables to the prepared statement as parameters
-				mysqli_stmt_bind_param($stmt, "i", $id);
-				
-				// Set parameters
-				$id = trim($_GET["id"]);
-				
-				// Attempt to execute the prepared statement
-				if(mysqli_stmt_execute($stmt)){
-						// store result 
-						mysqli_stmt_store_result($stmt);
-				} else{
-						echo "Oops! Something went wrong. Please try again later.";
-				}
-		}
-		// Close statement
-		mysqli_stmt_close($stmt);
-	}*/
-
-
-
 	$sql = "SELECT * FROM gibis WHERE id = '$id'";
 	$resultado = mysqli_query($link, $sql);
 	$dados = mysqli_fetch_array($resultado);
 endif;
 
-/*
-// Define as variáveis e as inicialza com valores vazios
-$err_titulo = $err_editora = $err_preco = $err_quantidade = "";
-
-// Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-	// Checa se o titulo é vazio
-	if (empty(trim($_POST["titulo"]))) {
-		$err_titulo ='Por favor entre com o título';
-	}else{
-		$titulo = trim($_POST["titulo"]);
-	}
-	// Checa se a editora é vazio
-	if (empty(trim($_POST["editora"]))) {
-		$err_editora ='Por favor entre com a editora';
-	}else{
-		$editora = trim($_POST["editora"]);
-	}
-	// Checa se o preço está vazio
-	if (empty(trim($_POST["preco"]))) {
-		$err_preco ='Por favor entre com o preço';
-	}else{
-		$preco = trim($_POST["preco"]);
-	}
-	// Checa se o Quantidade está vazio
-	if (empty(trim($_POST["quantidade"]))) {
-		$err_quantidade ='Por favor entre com o quantidade';
-	}else{
-		$quantidade = trim($_POST["quantidade"]);
-	}
-
-	if(empty($err_titulo) && empty($err_editora) && empty($err_preco) && empty($err_quantidade)){
-		//query into
-		$sql = "INSERT INTO gibis (titulo, editora, preco, quantidade,usuarios_id) VALUES (?,?,?,?,?)";
-		if($stmt = mysqli_prepare($link,$sql)){
-			mysqli_stmt_bind_param($stmt,"sssii",$titulo,$editora,$preco,$quantidade,$id);
-			if(mysqli_stmt_execute($stmt)){
-				header("location: welcome.php");
-			}else{
-				echo("Erro ao editar novo Gibi ");
-			}
-		}
-		// Close statement
-		mysqli_stmt_close($stmt);
-	}
-	// Close connection
-	mysqli_close($link);
-}*/
 if(isset($_POST['btn-editar'])):
 	$titulo = mysqli_escape_string($link,$_POST['titulo']);
 	$editora = mysqli_escape_string($link,$_POST['editora']);
