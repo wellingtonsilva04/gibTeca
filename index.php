@@ -1,3 +1,29 @@
+<?php 
+ require_once './content/config.php';
+//Verificar se está sendo passado na URL a página atual, senao é atribuido a pagina 
+$pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+
+//Selecionar todos os gibis da tabela
+$result_gibi = "SELECT count id as numbergibi FROM gibis";
+$resultado_gibi = mysqli_query($link, $result_gibi);
+
+//Contar o total de gibis
+$total_gibis = $resultado_gibi;
+
+//Seta a quantidade de gibis por pagina
+$quantidade_pg = 6;
+
+//calcular o número de pagina necessárias para apresentar os gibis
+$num_pagina = ceil($total_gibis/$quantidade_pg);
+
+//Calcular o inicio da visualizacao
+$incio = ($quantidade_pg*$pagina)-$quantidade_pg;
+
+//Selecionar os gibis a serem apresentado na página
+$result_gibis = "SELECT * FROM gibis limit $incio, $quantidade_pg";
+$resultado_gibis = mysqli_query($link, $result_gibis);
+$total_gibis = mysqli_num_rows($resultado_gibis);
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,15 +34,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel= "stylesheet" href= "public/css/index.css">
 <!-- Compiled and minified JavaScript -->
-
 </head>
-<body>
-  <div class="container">  
+	<body>
     <header>
       <nav>
         <div class="nav-wrapper blue row">
           <div class="col s4">
-          <a href="index.php" class="brand-logo">Logo</a>
+          <a href="index.php" class="brand-logo">Gibiteca</a>
           </div>
 
           <form class= "col s4">
@@ -36,17 +60,63 @@
         </div>
       </nav><!--Fim cabeçalho navbar-->
     </header><!--Fim cabeçalho-->
-    
-    
-  </div><!--Fim Container-->
-  
-  <script type="text/javascript" src="public/js/materialize.min.js"></script>
-  <script type="text/javascript">
-			 M.AutoInit();
-	</script>
-	
-</body>
+    <div class = 'container'>
+			<div class="page-header">
+				<h1>Gibis</h1>
+			</div>
+			<div class="row">
+				<?php while($rows_gibis = mysqli_fetch_assoc($resultado_gibis)){ ?>
+					<div class="col-sm-6 col-md-4">
+						<div class="thumbnail">
+							<div class="caption text-center">
+								<a href="detalhes.php?id_gibi=<?php echo $rows_gibis['id']; ?>"><h3><?php echo $rows_gibis['titulo']; ?></h3></a>
+								<p><a href="#" class="btn btn-primary" role="button">Comprar</a> </p>
+							</div>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+			<?php
+				//Verificar a pagina anterior e posterior
+				$pagina_anterior = $pagina - 1;
+				$pagina_posterior = $pagina + 1;
+			?>
+			<nav class="text-center">
+				<ul class="pagination">
+					<li>
+						<?php
+						if($pagina_anterior != 0){ ?>
+							<a href="index.php?pagina=<?php echo $pagina_anterior; ?>" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+							</a>
+						<?php }else{ ?>
+							<span aria-hidden="true">&laquo;</span>
+					<?php }  ?>
+					</li>
+					<?php 
+					//Apresentar a paginacao
+					for($i = 1; $i < $num_pagina + 1; $i++){ ?>
+						<li><a href="index.php?pagina=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+					<?php } ?>
+					<li>
+						<?php
+						if($pagina_posterior <= $num_pagina){ ?>
+							<a href="index.php?pagina=<?php echo $pagina_posterior; ?>" aria-label="Previous">
+								<span aria-hidden="true">&raquo;</span>
+							</a>
+						<?php }else{ ?>
+							<span aria-hidden="true">&raquo;</span>
+					<?php }  ?>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
 </html>
-
 
 
