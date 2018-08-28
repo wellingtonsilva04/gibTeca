@@ -40,7 +40,7 @@ $dados_usuario = mysqli_fetch_array($resultado_usuario)
 
           <form class= "col s4">
             <div class="input-field"><!-- BOTAO PROCURAR -->
-              <input id="search" type="search" required>
+              <input id="search" name="busca" type="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
             </div> <!-- FIM BOTAO PROCURAR-->

@@ -49,14 +49,15 @@ $total_gibis = mysqli_num_rows($resultado_gibis);
           <a href="index.php" class="brand-logo">Gibiteca</a>
           </div>
 
-          <form class= "col s4">
-            <div class="input-field row">
-              <input id="search" type="search" required>
-              <button class="btn waves-effect waves-light" type="submit" name="btn-pesquisar">
-    						<i class="material-icons right">search</i>
-  						</button>
-            </div>
+
+            <form action="content/buscar.php" method="post" class= "col s4">
+            <div class="input-field"><!-- BOTAO PROCURAR -->
+              <input type="search" name="busca" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div> <!-- FIM BOTAO PROCURAR-->
           </form>
+
           <div class= "col s4">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href= "content/login.php"><i class="material-icons">account_circle</i></a></li>
