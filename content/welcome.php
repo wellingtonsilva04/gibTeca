@@ -32,32 +32,28 @@ $dados_usuario = mysqli_fetch_array($resultado_usuario)
     </head>
 <body>
 <header>
+	  <ul id="dropdown2" class="dropdown-content ">
+	  	<li><a href="#!"><?php echo $dados_usuario['nome']; ?></a></li>
+	  	<li><a href="logout.php">logout</a></li>
+	  </ul>
       <nav><!--inicio nav cabecalho-->
-        <div class="nav-wrapper blue row">
-          <div class="col s4">
-          <a href="index.php" class="brand-logo">Gibiteca</a>
-          </div>
-
-          <form class= "col s4">
-            <div class="input-field"><!-- BOTAO PROCURAR -->
+ <!--        <div class="nav-wrapper blue row">
+            <form class= "col s4">
+            <div class="input-field">
               <input id="search" name="busca" type="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
               <i class="material-icons">close</i>
-            </div> <!-- FIM BOTAO PROCURAR-->
-          </form>
-          <div class= "col s4">
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-              <ul id="dropdown2" class="dropdown-content ">
-			  <li><a href= "#!"> <?php echo $dados_usuario['nome']; ?></a> <li/>
-			  	<li><a href="logout.php">logout</a></li>
- 				</ul>
-				<a class="btn dropdown-trigger" href="#!" data-target="dropdown2"><i class="material-icons">account_circle</i></a>
-            
-            	</ul>
+            </div> 
+          </form> -->
+		  <div class= "nav-wrapper blue">
+		  	
+		  	<a href="../index.php" class="brand-logo">Gibiteca</a>
+		  	<ul class="right hide-on-med-and-down">
+		  		<li><a class="btn dropdown-trigger" href="#!" data-target="dropdown2"><i class="material-icons">account_circle</i></a></li>
+		  	</ul>
           </div>
           
-        </div>
+  <!--       </div> -->
       </nav><!--Fim cabeçalho navbar-->
     </header><!--Fim cabeçalho-->
   <div class="container valign-wapper">
