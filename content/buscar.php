@@ -2,7 +2,7 @@
  require_once 'config.php';
 
 $busca = $_POST['busca']; 
-$busca = $trim($busca);
+$busca = trim($busca);
 
 //botão pesquisar
 $result_gibi = "SELECT * FROM mydb.gibis where titulo LIKE '%$busca%'";
@@ -11,7 +11,7 @@ $result_gibi = "SELECT * FROM mydb.gibis where titulo LIKE '%$busca%'";
 $resultado_gibi = mysqli_query($link, $result_gibi);
 
 
- if($resultado_gibi) {
+ if(empty($resultado_gibi) ){
 	echo "nenhum registro encontrado";
 }
 
@@ -21,5 +21,6 @@ while($dados =  mysqli_fetch_assoc($resultado_gibi)){
 	echo "editora:". $dados['editora']. "<br/>";
 	echo "preco:". $dados['preco']. "<br/>";
 	echo "quantidade:". $dados['quantidade']. "<br/>";
+	echo "<br/>";
 
 }
