@@ -41,7 +41,8 @@ $total_gibis = mysqli_num_rows($resultado_gibis);
 <link rel= "stylesheet" href= "public/css/index.css">
 <!-- Compiled and minified JavaScript -->
 </head>
-	<body>
+	<body
+		background="imgs/a.PNG" bgproperties="fixed">
     <header>
       <nav>
         <div class="nav-wrapper blue row">
@@ -60,7 +61,7 @@ $total_gibis = mysqli_num_rows($resultado_gibis);
 
           <div class= "col s4">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-              <li><a href= "content/login.php"><i class="material-icons">account_circle</i></a></li>
+              <li><a href= "content/welcome.php"><i class="material-icons">account_circle</i></a></li>
             </ul>
           </div>
           
